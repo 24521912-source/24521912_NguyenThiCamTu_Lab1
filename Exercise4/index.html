@@ -4,55 +4,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resilient Component</title>
 
-    <link rel="stylesheet" href="style.css">
+    <title>Exercise 4 - Resilient Component</title>
+
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
 
-    <header>
+    <header class="page-header">
         <h1>Developer Resources</h1>
         <p>Exercise 4 - Resilient Component Architecture</p>
     </header>
+
 
     <main>
 
         <section aria-labelledby="resources-title">
 
             <header class="section-header">
-                <h2 id="resources-title">Resources</h2>
 
-                <nav class="state-controls" aria-label="Component state controls">
-                    <button type="button" data-state="loading">
+                <h2 id="resources-title">
+                    Resources
+                </h2>
+
+                <nav
+                    class="state-controls"
+                    aria-label="Component state controls"
+                >
+
+                    <button
+                        type="button"
+                        data-state="loading"
+                    >
                         Loading
                     </button>
 
-                    <button type="button" data-state="success">
+                    <button
+                        type="button"
+                        data-state="success"
+                    >
                         Live Data
                     </button>
 
-                    <button type="button" data-state="empty">
+                    <button
+                        type="button"
+                        data-state="empty"
+                    >
                         Empty
                     </button>
 
-                    <button type="button" data-state="error">
+                    <button
+                        type="button"
+                        data-state="error"
+                    >
                         Error
                     </button>
+
                 </nav>
+
             </header>
+
 
             <section
                 id="component"
                 class="component"
                 aria-live="polite"
-            ></section>
+            >
+            </section>
 
         </section>
 
     </main>
 
-    <script src="script.js"></script>
+
+    <script src="./script.js"></script>
 
 </body>
 
