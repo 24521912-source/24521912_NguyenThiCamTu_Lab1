@@ -2,69 +2,101 @@
 
 ## State Machine
 
-The component supports four states:
+The component contains four states:
 
 1. Loading
 2. Live Data
 3. Empty
 4. Error
 
-State transitions:
+
+## State Transitions
 
 Loading -> Live Data
+
 Loading -> Empty
+
 Loading -> Error
-Error -> Loading -> Live Data / Empty / Error
+
+Error -> Loading -> Live Data
+
 
 ---
 
 ## T-03A - Loading Skeleton
 
-Goal:
+### Goal
+
 Create a loading state using a pure CSS shimmer animation.
 
-Contract:
-- No JavaScript animation.
-- Skeleton items represent loading content.
-- Use CSS @keyframes.
-- Loading state must be visually identifiable.
+### Contract
 
-Verification:
-- Skeleton animation runs continuously.
+- Use CSS animation.
+- Do not use JavaScript for the shimmer animation.
+- Display skeleton items while content is loading.
+
+### Verification
+
+- Skeleton animation is visible.
 - No console errors.
+
 
 ---
 
 ## T-03B - Live Data State
 
-Goal:
-Display successfully loaded content.
+### Goal
 
-Contract:
-- Use CSS Grid for the item list.
+Display successfully loaded resources.
+
+### Contract
+
+- Use CSS Grid for the resource cards.
 - Use Flexbox for metadata badges.
-- Use semantic HTML where possible.
+- Use semantic HTML elements.
 
-Verification:
-- Cards display correctly.
+### Verification
+
+- Resource cards display correctly.
 - Layout is responsive.
 - No horizontal scrolling at 375px.
 
+
 ---
 
-## T-03C - Empty and Error States
+## T-03C - Empty State
 
-Goal:
-Handle cases where no data is available or loading fails.
+### Goal
 
-Empty State:
-- Display a clear message.
-- Do not show fake content.
+Display a message when no data exists.
 
-Error State:
+### Contract
+
+- Display a clear empty message.
+- Do not display fake data.
+
+### Verification
+
+- Empty state appears correctly.
+- Layout remains responsive.
+
+
+---
+
+## T-03D - Error State
+
+### Goal
+
+Display an error message when loading fails.
+
+### Contract
+
 - Display an error message.
 - Provide an accessible Retry button.
+- Retry returns the component to Loading state.
 
-Verification:
-- Retry button can be reached using Tab.
-- Retry can be triggered using Enter or Space.
+### Verification
+
+- Retry button works.
+- Retry button can be reached with Tab.
+- Retry button works with Enter or Space.
