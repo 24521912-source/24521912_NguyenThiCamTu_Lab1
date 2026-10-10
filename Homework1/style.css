@@ -428,6 +428,12 @@ body > header nav li a:hover {
   text-align: left;
 }
 
+#home h1 > span {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
 .hero-intro {
   color: var(--color-text-muted);
   font-size: var(--font-size-lg);
@@ -442,7 +448,8 @@ body > header nav li a:hover {
 
 .hero-name > span {
   display: inline-block;
-  white-space: nowrap;
+  max-width: 100%;
+  white-space: normal;
 }
 
 .hero-alias {
