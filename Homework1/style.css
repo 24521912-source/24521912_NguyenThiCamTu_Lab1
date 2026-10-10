@@ -41,7 +41,7 @@
   --font-size-md: 1.125rem;
   --font-size-lg: 1.5rem;
   --font-size-xl: 2rem;
-  --font-size-hero: clamp(2.4rem, 6vw, 4.5rem);
+  --font-size-hero: clamp(2rem, 4vw, 3.5rem);
 
   --font-weight-normal: 400;
   --font-weight-medium: 500;
@@ -422,7 +422,35 @@ body > header nav li a:hover {
 }
 
 #home h1 {
-  max-width: 800px;
+  display: grid;
+  gap: var(--space-3);
+  max-width: 100%;
+  text-align: left;
+}
+
+.hero-intro {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: normal;
+}
+
+.hero-name {
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.hero-name > span {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.hero-alias {
+  color: var(--color-primary);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-body);
+  letter-spacing: normal;
 }
 
 #home > p {
