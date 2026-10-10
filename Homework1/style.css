@@ -13,22 +13,22 @@
    ===================================================== */
 
 :root {
-  /* Color system */
-  --color-bg: #f8fafc;
+  /* Soft Rose & Burgundy: light palette */
+  --color-bg: #fff5f6;
   --color-surface: #ffffff;
-  --color-surface-soft: #eef2ff;
+  --color-surface-soft: #fbe8ed;
 
-  --color-text: #111827;
-  --color-text-muted: #475569;
+  --color-text: #2b1822;
+  --color-text-muted: #72505d;
 
-  --color-primary: #4338ca;
-  --color-primary-hover: #3730a3;
+  --color-primary: #943d5a;
+  --color-primary-hover: #7d2f49;
   --color-on-primary: #ffffff;
 
-  --color-border: #cbd5e1;
-  --color-border-soft: #e2e8f0;
+  --color-border: #b8748b;
+  --color-border-soft: #eed1da;
 
-  --color-focus: #4338ca;
+  --color-focus: #943d5a;
 
   /* Typography */
   --font-family: system-ui, -apple-system,
@@ -81,10 +81,54 @@
 
   /* Shadows */
   --shadow-card:
-    0 8px 28px rgb(15 23 42 / 0.06);
+    0 8px 28px rgb(43 24 34 / 0.06);
 
   --shadow-card-hover:
-    0 14px 32px rgb(15 23 42 / 0.1);
+    0 14px 32px rgb(43 24 34 / 0.1);
+}
+
+/* =====================================================
+   T-03: DARK THEME DESIGN TOKENS
+   ===================================================== */
+
+:root.dark-theme {
+  /* Soft Rose & Burgundy: dark backgrounds */
+  --color-bg: #2b1822;
+  --color-surface: #3c2230;
+  --color-surface-soft: #482b39;
+
+  /* Text colors */
+  --color-text: #fff4f7;
+  --color-text-muted: #e6bdca;
+
+  /* Accent colors */
+  --color-primary: #efb0c4;
+  --color-primary-hover: #f6c4d4;
+  --color-on-primary: #2b1822;
+
+  /* Borders */
+  --color-border: #b47b8e;
+  --color-border-soft: #694553;
+
+  /* Keyboard focus */
+  --color-focus: #efb0c4;
+
+  /* Shadows */
+  --shadow-card:
+    0 8px 28px rgb(12 5 9 / 0.2);
+
+  --shadow-card-hover:
+    0 14px 32px rgb(12 5 9 / 0.3);
+}
+
+/* Native form controls follow the active theme */
+
+:root {
+  color-scheme: light;
+}
+
+:root.dark-theme {
+  color-scheme: dark;
 }
 
 
