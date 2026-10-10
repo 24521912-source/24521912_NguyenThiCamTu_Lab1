@@ -17,8 +17,10 @@
 
   <title>Nguyễn Thị Cẩm Tú | Aspiring Data Engineer</title>
 
-  <!-- T-02: External CSS stylesheet -->
+  <!-- External styles and theme behavior -->
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+
 </head>
 
 <body>
@@ -77,15 +79,15 @@
 
     </nav>
 
-    <!-- T-03 placeholder: No JavaScript yet -->
+    <!-- Accessible theme toggle; JavaScript updates the label and state -->
     <button
       type="button"
       id="theme-toggle"
       class="theme-toggle"
-      aria-label="Dark mode feature coming soon"
-      disabled
+      aria-label="Switch to dark mode"
+      aria-pressed="false"
     >
-      Dark Mode (Coming Soon)
+      Dark Mode
     </button>
 
   </header>

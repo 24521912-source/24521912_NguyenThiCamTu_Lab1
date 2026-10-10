@@ -4,7 +4,7 @@
    TASK T-02: CSS DESIGN & RESPONSIVE LAYOUT
 
    Mobile-first | Semantic HTML | Vanilla CSS
-   No JavaScript or dark-mode functionality in T-02
+   Responsive layout and Soft Rose & Burgundy theme palettes
    ===================================================== */
 
 
@@ -373,7 +373,7 @@ body > header nav li a:hover {
   color: var(--color-primary);
 }
 
-/* Theme button is a non-functional T-03 placeholder */
+/* Theme toggle control */
 
 #theme-toggle {
   align-self: flex-start;
@@ -390,7 +390,7 @@ body > header nav li a:hover {
   font-weight: var(--font-weight-medium);
 }
 
-/* It remains visually present but has no theme logic */
+/* Disabled control state */
 
 #theme-toggle:disabled {
   cursor: not-allowed;
