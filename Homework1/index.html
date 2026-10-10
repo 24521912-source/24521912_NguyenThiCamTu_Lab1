@@ -1,0 +1,491 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Personal portfolio showcasing my skills, projects, and experience in web development."
+  >
+
+  <title>My Portfolio | Web Developer</title>
+
+  <!-- T-02: External CSS stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ========================================
+       ACCESSIBLE SKIP NAVIGATION
+       ======================================== -->
+
+  <a href="#main-content" class="skip-link">
+    Skip to main content
+  </a>
+
+
+  <!-- ========================================
+       HEADER & NAVIGATION
+       ======================================== -->
+
+  <header id="top" class="site-header">
+
+    <a
+      href="#top"
+      class="site-logo"
+      aria-label="Portfolio homepage"
+    >
+      MyPortfolio.
+    </a>
+
+    <nav
+      class="main-nav"
+      aria-label="Primary navigation"
+    >
+
+      <ul class="nav-list">
+
+        <li>
+          <a href="#home">Home</a>
+        </li>
+
+        <li>
+          <a href="#about">About</a>
+        </li>
+
+        <li>
+          <a href="#skills">Skills</a>
+        </li>
+
+        <li>
+          <a href="#projects">Projects</a>
+        </li>
+
+        <li>
+          <a href="#contact">Contact</a>
+        </li>
+
+      </ul>
+
+    </nav>
+
+    <!-- T-03 placeholder: No JavaScript yet -->
+    <button
+      type="button"
+      id="theme-toggle"
+      class="theme-toggle"
+      aria-label="Dark mode feature coming soon"
+      disabled
+    >
+      Dark Mode (Coming Soon)
+    </button>
+
+  </header>
+
+
+  <!-- ========================================
+       MAIN CONTENT
+       ======================================== -->
+
+  <main id="main-content">
+
+
+    <!-- ======================================
+         HERO SECTION
+         ====================================== -->
+
+    <section
+      id="home"
+      class="hero-section"
+      aria-labelledby="hero-title"
+    >
+
+      <p class="hero-greeting">
+        Hello, welcome to my portfolio!
+      </p>
+
+      <h1 id="hero-title" class="hero-title">
+        Hi, I'm Your Name.
+      </h1>
+
+      <p class="hero-subtitle">
+        Aspiring Web Developer |
+        Technology Enthusiast |
+        Creative Problem Solver
+      </p>
+
+      <p class="hero-description">
+        I am passionate about building modern,
+        accessible, and user-friendly websites.
+        I enjoy learning new technologies and
+        turning creative ideas into real projects.
+      </p>
+
+      <p class="hero-actions">
+
+        <a
+          href="#projects"
+          class="button button-primary"
+        >
+          Explore My Projects
+        </a>
+
+        <a
+          href="#contact"
+          class="button button-secondary"
+        >
+          Get In Touch
+        </a>
+
+      </p>
+
+      <!-- Personal portrait placeholder -->
+      <figure class="hero-portrait">
+
+        <img
+          src="assets/profile.jpg"
+          alt="Portrait of Your Name"
+          width="400"
+          height="480"
+        >
+
+        <figcaption>
+          My personal portrait
+        </figcaption>
+
+      </figure>
+
+    </section>
+
+
+    <!-- ======================================
+         ABOUT ME SECTION
+         ====================================== -->
+
+    <section
+      id="about"
+      class="about-section"
+      aria-labelledby="about-title"
+    >
+
+      <h2 id="about-title">
+        About Me
+      </h2>
+
+      <p>
+        I am a university student with a strong
+        interest in software engineering,
+        web technologies, and artificial intelligence.
+      </p>
+
+      <p>
+        My goal is to develop practical technical
+        skills and create digital products that
+        solve real-world problems.
+      </p>
+
+      <h3>
+        What I Enjoy
+      </h3>
+
+      <ul class="interest-list">
+
+        <li>
+          Exploring modern web technologies
+        </li>
+
+        <li>
+          Building creative software projects
+        </li>
+
+        <li>
+          Learning about artificial intelligence
+        </li>
+
+        <li>
+          Collaborating with other developers
+        </li>
+
+      </ul>
+
+      <!-- Additional personal photo -->
+      <figure class="about-photo">
+
+        <img
+          src="assets/about.jpg"
+          alt="Personal photograph showing my interests and activities"
+          width="600"
+          height="400"
+        >
+
+        <figcaption>
+          A little more about my journey
+        </figcaption>
+
+      </figure>
+
+    </section>
+
+
+    <!-- ======================================
+         SKILLS SECTION
+         ====================================== -->
+
+    <section
+      id="skills"
+      class="skills-section"
+      aria-labelledby="skills-title"
+    >
+
+      <h2 id="skills-title">
+        My Skills
+      </h2>
+
+      <p class="section-description">
+        Technologies and tools I am currently
+        learning and using.
+      </p>
+
+      <!-- Skills Grid -->
+      <section
+        class="skills-grid"
+        aria-label="Skill categories"
+      >
+
+        <!-- Frontend Skills -->
+        <article class="skill-card">
+
+          <h3>
+            Frontend Development
+          </h3>
+
+          <ul class="skill-list">
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript ES6+</li>
+            <li>Responsive Web Design</li>
+          </ul>
+
+        </article>
+
+        <!-- Programming Skills -->
+        <article class="skill-card">
+
+          <h3>
+            Programming
+          </h3>
+
+          <ul class="skill-list">
+            <li>Python</li>
+            <li>JavaScript</li>
+            <li>Problem Solving</li>
+          </ul>
+
+        </article>
+
+        <!-- Development Tools -->
+        <article class="skill-card">
+
+          <h3>
+            Development Tools
+          </h3>
+
+          <ul class="skill-list">
+            <li>Visual Studio Code</li>
+            <li>Git</li>
+            <li>GitHub</li>
+            <li>Chrome DevTools</li>
+          </ul>
+
+        </article>
+
+      </section>
+
+    </section>
+
+
+    <!-- ======================================
+         FEATURED PROJECTS SECTION
+         ====================================== -->
+
+    <section
+      id="projects"
+      class="projects-section"
+      aria-labelledby="projects-title"
+    >
+
+      <h2 id="projects-title">
+        Featured Projects
+      </h2>
+
+      <p class="section-description">
+        A selection of projects that demonstrate
+        my technical skills and learning journey.
+      </p>
+
+      <!-- Project 1 -->
+      <article class="project-card">
+
+        <figure class="project-image">
+
+          <img
+            src="assets/project1.jpg"
+            alt="Screenshot of my personal portfolio website"
+            width="600"
+            height="360"
+          >
+
+          <figcaption>
+            Portfolio Website Preview
+          </figcaption>
+
+        </figure>
+
+        <h3>
+          Personal Portfolio Website
+        </h3>
+
+        <p>
+          A personal website built with semantic
+          HTML5, modern CSS, and Vanilla JavaScript.
+          It focuses on responsive design,
+          accessibility, and clean architecture.
+        </p>
+
+        <ul class="project-tech">
+          <li>HTML5</li>
+          <li>CSS3</li>
+          <li>JavaScript</li>
+        </ul>
+
+      </article>
+
+
+      <!-- Project 2 -->
+      <article class="project-card">
+
+        <figure class="project-image">
+
+          <img
+            src="assets/project2.jpg"
+            alt="Preview image of a student web application project"
+            width="600"
+            height="360"
+          >
+
+          <figcaption>
+            Student Project Preview
+          </figcaption>
+
+        </figure>
+
+        <h3>
+          Student Web Application
+        </h3>
+
+        <p>
+          A learning project focused on creating
+          an interactive and user-friendly web
+          application using core web technologies.
+        </p>
+
+        <ul class="project-tech">
+          <li>Web Development</li>
+          <li>JavaScript</li>
+          <li>UI Design</li>
+        </ul>
+
+      </article>
+
+    </section>
+
+
+    <!-- ======================================
+         CONTACT SECTION
+         ====================================== -->
+
+    <section
+      id="contact"
+      class="contact-section"
+      aria-labelledby="contact-title"
+    >
+
+      <h2 id="contact-title">
+        Let's Connect
+      </h2>
+
+      <p>
+        I am always interested in learning,
+        collaborating, and exploring new
+        opportunities in technology.
+      </p>
+
+      <address class="contact-info">
+
+        <p>
+          Email:
+          <a href="mailto:yourname@example.com">
+            yourname@example.com
+          </a>
+        </p>
+
+        <p>
+          GitHub:
+          <a
+            href="https://github.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Visit My GitHub
+          </a>
+        </p>
+
+        <p>
+          LinkedIn:
+          <a
+            href="https://www.linkedin.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Visit My LinkedIn
+          </a>
+        </p>
+
+      </address>
+
+    </section>
+
+  </main>
+
+
+  <!-- ========================================
+       FOOTER
+       ======================================== -->
+
+  <footer class="site-footer">
+
+    <p>
+      &copy; 2026 Your Name.
+      All rights reserved.
+    </p>
+
+    <p>
+      Built with HTML5, CSS3, and JavaScript.
+    </p>
+
+    <a href="#top" class="back-to-top">
+      Back to top
+    </a>
+
+  </footer>
+
+</body>
+</html>
