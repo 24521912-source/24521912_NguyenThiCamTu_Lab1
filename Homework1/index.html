@@ -303,12 +303,12 @@
     >
 
       <h2 id="skills-title">
-        My Skills
+        Skills &amp; Learning
       </h2>
 
       <p class="section-description">
-        Technologies and tools I am currently
-        learning and using.
+        The foundations I am developing as a third-year UIT student
+        working toward a career in Data Engineering.
       </p>
 
       <!-- Skills Grid -->
@@ -317,49 +317,82 @@
         aria-label="Skill categories"
       >
 
-        <!-- Frontend Skills -->
         <article class="skill-card">
 
           <h3>
-            Frontend Development
+            Python &amp; SQL
           </h3>
 
+          <p>
+            Building programming and query skills to explore,
+            clean, and organize data.
+          </p>
+
           <ul class="skill-list">
-            <li>HTML5</li>
-            <li>CSS3</li>
-            <li>JavaScript ES6+</li>
-            <li>Responsive Web Design</li>
+            <li>Python fundamentals</li>
+            <li>SQL queries</li>
+            <li>Data cleaning</li>
+            <li>CSV &amp; JSON</li>
           </ul>
 
         </article>
 
-        <!-- Programming Skills -->
         <article class="skill-card">
 
           <h3>
-            Programming
+            Data Pipelines
           </h3>
 
+          <p>
+            Learning how data moves from source systems to
+            useful, reliable datasets.
+          </p>
+
           <ul class="skill-list">
-            <li>Python</li>
-            <li>JavaScript</li>
-            <li>Problem Solving</li>
+            <li>ETL / ELT concepts</li>
+            <li>Data transformation</li>
+            <li>Quality checks</li>
+            <li>Workflow automation</li>
           </ul>
 
         </article>
 
-        <!-- Development Tools -->
         <article class="skill-card">
 
           <h3>
-            Development Tools
+            Databases &amp; Modeling
           </h3>
 
+          <p>
+            Exploring how to structure and store data for
+            consistent queries and analytics.
+          </p>
+
           <ul class="skill-list">
-            <li>Visual Studio Code</li>
-            <li>Git</li>
-            <li>GitHub</li>
-            <li>Chrome DevTools</li>
+            <li>Relational databases</li>
+            <li>PostgreSQL basics</li>
+            <li>Keys &amp; relationships</li>
+            <li>Star schema concepts</li>
+          </ul>
+
+        </article>
+
+        <article class="skill-card">
+
+          <h3>
+            Engineering Workflow
+          </h3>
+
+          <p>
+            Practicing version control, clear documentation,
+            and debugging through coursework and this portfolio.
+          </p>
+
+          <ul class="skill-list">
+            <li>Git &amp; GitHub</li>
+            <li>Documentation</li>
+            <li>Debugging</li>
+            <li>HTML / CSS / JavaScript</li>
           </ul>
 
         </article>
@@ -380,12 +413,12 @@
     >
 
       <h2 id="projects-title">
-        Featured Projects
+        Projects &amp; Learning Plans
       </h2>
 
       <p class="section-description">
-        A selection of projects that demonstrate
-        my technical skills and learning journey.
+        My current portfolio and two planned learning projects
+        for practicing data pipelines, data modeling, and SQL.
       </p>
 
       <!-- Project 1 -->
@@ -394,33 +427,38 @@
         <figure class="project-image">
 
           <img
-            src="assets/project1.jpg"
-            alt="Screenshot of my personal portfolio website"
-            width="600"
-            height="360"
+            src="assets/project-data-pipeline.svg"
+            alt="Concept diagram showing source files flowing through Python validation into PostgreSQL"
+            width="800"
+            height="520"
+            loading="lazy"
+            decoding="async"
           >
 
           <figcaption>
-            Portfolio Website Preview
+            Concept illustration: source to database
           </figcaption>
 
         </figure>
 
+        <p class="project-status">Planned learning project</p>
+
         <h3>
-          Personal Portfolio Website
+          Retail Sales Data Pipeline
         </h3>
 
         <p>
-          A personal website built with semantic
-          HTML5, modern CSS, and Vanilla JavaScript.
-          It focuses on responsive design,
-          accessibility, and clean architecture.
+          A project I plan to build using sample sales CSV files:
+          clean and validate records with Python, load them into
+          PostgreSQL, and write SQL summaries. The focus will be
+          handling missing values, duplicates, and repeatable loads.
         </p>
 
         <ul class="project-tech">
-          <li>HTML5</li>
-          <li>CSS3</li>
-          <li>JavaScript</li>
+          <li>Python</li>
+          <li>SQL</li>
+          <li>PostgreSQL</li>
+          <li>ETL</li>
         </ul>
 
       </article>
@@ -432,32 +470,81 @@
         <figure class="project-image">
 
           <img
-            src="assets/project2.jpg"
-            alt="Preview image of a student web application project"
-            width="600"
-            height="360"
+            src="assets/project-data-warehouse.svg"
+            alt="Concept star schema connecting a sales fact table to customer, product, and date dimensions"
+            width="800"
+            height="520"
+            loading="lazy"
+            decoding="async"
           >
 
           <figcaption>
-            Student Project Preview
+            Concept illustration: sales star schema
           </figcaption>
 
         </figure>
 
+        <p class="project-status">Planned learning project</p>
+
         <h3>
-          Student Web Application
+          Sales Analytics Warehouse
         </h3>
 
         <p>
-          A learning project focused on creating
-          an interactive and user-friendly web
-          application using core web technologies.
+          A planned modeling exercise using sample sales data.
+          I want to design fact and dimension tables, query sales
+          by product and time, and check that summary totals
+          match the source data.
         </p>
 
         <ul class="project-tech">
-          <li>Web Development</li>
+          <li>SQL</li>
+          <li>Data modeling</li>
+          <li>Star schema</li>
+          <li>Data quality</li>
+        </ul>
+
+      </article>
+
+
+      <!-- Project 3 -->
+      <article class="project-card">
+
+        <figure class="project-image">
+
+          <img
+            src="assets/project-portfolio.svg"
+            alt="Illustrated portfolio layout with an introduction, skill cards, and project cards"
+            width="800"
+            height="520"
+            loading="lazy"
+            decoding="async"
+          >
+
+          <figcaption>
+            Illustrated layout of my personal portfolio
+          </figcaption>
+
+        </figure>
+
+        <p class="project-status">In progress</p>
+
+        <h3>
+          Personal Portfolio Website
+        </h3>
+
+        <p>
+          The website you are viewing, built with HTML, CSS, and
+          Vanilla JavaScript to introduce my background and
+          Data Engineering goals. I am practicing responsive
+          design, accessible markup, and version control with Git.
+        </p>
+
+        <ul class="project-tech">
+          <li>HTML5</li>
+          <li>CSS3</li>
           <li>JavaScript</li>
-          <li>UI Design</li>
+          <li>Git &amp; GitHub</li>
         </ul>
 
       </article>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img" aria-labelledby="title description">
+  <title id="title">Retail sales data pipeline concept</title>
+  <desc id="description">CSV and JSON source files pass through Python cleaning and validation before loading into PostgreSQL.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#fff5f6"/>
+      <stop offset="1" stop-color="#f4d4df"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="m 0 0 10 5 -10 5 z" fill="#943d5a"/>
+    </marker>
+  </defs>
+  <rect width="800" height="520" fill="url(#background)"/>
+  <circle cx="763" cy="25" r="132" fill="#efb0c4" opacity=".3"/>
+  <g font-family="system-ui, sans-serif">
+    <text x="48" y="65" fill="#943d5a" font-size="24" font-weight="700" letter-spacing="3">DATA PIPELINE</text>
+    <text x="48" y="119" fill="#2b1822" font-size="40" font-weight="700">From raw to reliable.</text>
+    <path d="M 240 264 H 291 M 509 264 H 560" fill="none" stroke="#943d5a" stroke-width="4" marker-end="url(#arrow)"/>
+    <rect x="44" y="185" width="196" height="166" rx="24" fill="#fff" stroke="#b8748b" stroke-width="2"/>
+    <path d="M 115 209 H 150 L 169 228 V 257 H 115 Z M 150 209 V 228 H 169" fill="#fbe8ed" stroke="#943d5a" stroke-width="3" stroke-linejoin="round"/>
+    <text x="142" y="295" text-anchor="middle" fill="#2b1822" font-size="30" font-weight="700">Source files</text>
+    <text x="142" y="328" text-anchor="middle" fill="#72505d" font-size="24">CSV / JSON</text>
+    <rect x="302" y="185" width="196" height="166" rx="24" fill="#943d5a"/>
+    <path d="m 384 222 -15 15 15 15 m 32 -30 15 15 -15 15 m -11 -36 -10 42" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="400" y="295" text-anchor="middle" fill="#fff" font-size="30" font-weight="700">Transform</text>
+    <text x="400" y="328" text-anchor="middle" fill="#fff" font-size="24">Python checks</text>
+    <rect x="560" y="185" width="196" height="166" rx="24" fill="#fff" stroke="#b8748b" stroke-width="2"/>
+    <path d="M 630 220 V 251 C 630 265 686 265 686 251 V 220 M 630 235 C 630 249 686 249 686 235" fill="#fbe8ed" stroke="#943d5a" stroke-width="3"/>
+    <ellipse cx="658" cy="220" rx="28" ry="10" fill="#fbe8ed" stroke="#943d5a" stroke-width="3"/>
+    <text x="658" y="295" text-anchor="middle" fill="#2b1822" font-size="30" font-weight="700">Database</text>
+    <text x="658" y="328" text-anchor="middle" fill="#72505d" font-size="24">PostgreSQL</text>
+    <rect x="44" y="393" width="712" height="78" rx="20" fill="#fff" fill-opacity=".8"/>
+    <path d="m 77 431 10 10 19 -22" fill="none" stroke="#943d5a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="124" y="443" fill="#72505d" font-size="28">Clean records. Repeatable loads.</text>
+  </g>
+</svg>

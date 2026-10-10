@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img" aria-labelledby="title description">
+  <title id="title">Personal portfolio layout illustration</title>
+  <desc id="description">An illustrated browser window with a Data Engineering introduction, skill cards, and project cards in soft rose and burgundy.</desc>
+  <rect width="800" height="520" fill="#fbe8ed"/>
+  <circle cx="770" cy="504" r="154" fill="#efb0c4" opacity=".5"/>
+  <rect x="42" y="34" width="716" height="452" rx="26" fill="#fff5f6" stroke="#b8748b" stroke-width="2"/>
+  <path d="M 42 85 H 758" stroke="#eed1da" stroke-width="2"/>
+  <g fill="#b8748b">
+    <circle cx="71" cy="60" r="6"/>
+    <circle cx="94" cy="60" r="6"/>
+    <circle cx="117" cy="60" r="6"/>
+  </g>
+  <rect x="289" y="49" width="222" height="22" rx="11" fill="#fbe8ed"/>
+  <g font-family="system-ui, sans-serif">
+    <text x="79" y="132" fill="#943d5a" font-size="24" font-weight="700">MY PORTFOLIO</text>
+    <text x="79" y="181" fill="#2b1822" font-size="36" font-weight="700">Aspiring</text>
+    <text x="79" y="224" fill="#2b1822" font-size="36" font-weight="700">Data Engineer.</text>
+    <text x="79" y="258" fill="#72505d" font-size="23">UIT student · Learning through projects</text>
+    <rect x="79" y="280" width="200" height="42" rx="21" fill="#943d5a"/>
+    <text x="179" y="308" text-anchor="middle" fill="#fff" font-size="21" font-weight="600">Explore projects</text>
+    <rect x="555" y="118" width="164" height="196" rx="26" fill="#fbe8ed"/>
+    <circle cx="637" cy="176" r="31" fill="#b8748b"/>
+    <path d="M 580 278 C 580 213 694 213 694 278 Z" fill="#943d5a"/>
+    <g fill="#fff" stroke="#eed1da" stroke-width="2">
+      <rect x="79" y="353" width="198" height="97" rx="16"/>
+      <rect x="301" y="353" width="198" height="97" rx="16"/>
+      <rect x="523" y="353" width="198" height="97" rx="16"/>
+    </g>
+    <g fill="#943d5a" font-size="24" font-weight="600" text-anchor="middle">
+      <text x="178" y="394">Skills</text>
+      <text x="400" y="394">Projects</text>
+      <text x="622" y="394">My journey</text>
+    </g>
+    <g fill="#fbe8ed">
+      <rect x="111" y="411" width="134" height="10" rx="5"/>
+      <rect x="333" y="411" width="134" height="10" rx="5"/>
+      <rect x="555" y="411" width="134" height="10" rx="5"/>
+    </g>
+  </g>
+</svg>
