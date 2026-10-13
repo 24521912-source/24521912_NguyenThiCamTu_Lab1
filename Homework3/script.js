@@ -83,3 +83,58 @@
     tick();
   }
 })();
+
+
+/* ---------------------------------------------------
+   SLICE 2: REGISTRATION FORM STATE MACHINE
+   idle -> submitting -> success | error
+   CSS reads data-state; JS only switches it.
+   --------------------------------------------------- */
+
+(() => {
+  const MOCK_LATENCY_MS = 1200;
+  const registeredEmails = new Set();
+
+  // Mock API (no backend in this lab). Offline: DevTools > Network > Offline.
+  function registerAttendee({ email }) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (!navigator.onLine) {
+          reject(new Error("You are offline. Check your connection and try again."));
+        } else if (registeredEmails.has(email)) {
+          reject(new Error("This email is already registered."));
+        } else {
+          registeredEmails.add(email);
+          resolve();
+        }
+      }, MOCK_LATENCY_MS);
+    });
+  }
+
+  const form = document.querySelector("#register-form");
+  const statusText = form.querySelector(".form-status");
+
+  function setFormState(state, message) {
+    form.dataset.state = state;
+    statusText.textContent = message;
+  }
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+
+    const data = new FormData(form);
+    const name = data.get("name");
+    const email = data.get("email");
+
+    setFormState("submitting", "Sending your registration...");
+
+    try {
+      await registerAttendee({ name, email });
+      setFormState("success", `Thanks, ${name}! Your ticket is on its way to ${email}.`);
+      form.reset();
+    } catch (error) {
+      setFormState("error", error.message);
+    }
+  });
+})();
