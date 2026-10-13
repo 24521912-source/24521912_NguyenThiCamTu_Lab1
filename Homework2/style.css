@@ -1,0 +1,206 @@
+/* =====================================================
+   HOMEWORK 2 - DRUM KIT ENGINE
+   TASK T-02: Design tokens, reset, responsive pad grid
+   ===================================================== */
+
+
+/* =====================================================
+   01. DESIGN TOKENS
+   ===================================================== */
+
+:root {
+  color-scheme: light dark;
+
+  --color-bg: #f8fafc;
+  --color-surface: #ffffff;
+  --color-text: #0f172a;
+  --color-text-muted: #475569;
+  --color-border: #64748b;
+  --color-accent: #0369a1;
+  --color-on-accent: #ffffff;
+
+  --font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, Consolas, monospace;
+
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+
+  --radius: 0.75rem;
+  --pad-height: 6rem;
+  --transition: 80ms ease-out;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0f172a;
+    --color-surface: #1e293b;
+    --color-text: #f8fafc;
+    --color-text-muted: #cbd5e1;
+    --color-border: #94a3b8;
+    --color-accent: #38bdf8;
+    --color-on-accent: #0f172a;
+  }
+}
+
+
+/* =====================================================
+   02. RESET
+   ===================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-family);
+  line-height: 1.6;
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+ul,
+menu {
+  list-style: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+
+/* =====================================================
+   03. PAGE LAYOUT
+   ===================================================== */
+
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -100%;
+  padding: var(--space-2) var(--space-4);
+  color: var(--color-on-accent);
+  background: var(--color-accent);
+  border-radius: var(--radius);
+}
+
+.skip-link:focus {
+  top: var(--space-4);
+}
+
+.site-header,
+main,
+.site-footer {
+  width: min(100% - 2 * var(--space-4), 40rem);
+  margin-inline: auto;
+}
+
+.site-header {
+  padding-block: var(--space-6) var(--space-4);
+}
+
+.site-header p,
+.site-footer {
+  color: var(--color-text-muted);
+}
+
+main {
+  display: grid;
+  gap: var(--space-6);
+}
+
+h2 {
+  margin-bottom: var(--space-3);
+  font-size: 1.25rem;
+}
+
+.site-footer {
+  padding-block: var(--space-6);
+  font-size: 0.875rem;
+}
+
+
+/* =====================================================
+   04. DRUM PAD GRID
+   ===================================================== */
+
+.pad-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+}
+
+.drum-pad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  width: 100%;
+  min-height: var(--pad-height);
+  padding: var(--space-2);
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  transition: transform var(--transition), background var(--transition);
+}
+
+.drum-pad kbd {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.drum-pad.active {
+  color: var(--color-on-accent);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: scale(0.95);
+}
+
+
+/* =====================================================
+   05. RECORDER
+   ===================================================== */
+
+.recorder-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.recorder-controls button {
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.recorder-controls button[aria-pressed="true"] {
+  color: var(--color-on-accent);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.recorder-status {
+  color: var(--color-text-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drum-pad {
+    transition: none;
+  }
+}
