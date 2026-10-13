@@ -1,0 +1,234 @@
+/* =====================================================
+   HOMEWORK 3 - RESILIENT EVENT HUB
+   Design tokens, reset, layout, and form states
+   ===================================================== */
+
+
+/* =====================================================
+   01. DESIGN TOKENS
+   ===================================================== */
+
+:root {
+  color-scheme: light dark;
+
+  --color-bg: #f8fafc;
+  --color-surface: #ffffff;
+  --color-text: #0f172a;
+  --color-text-muted: #475569;
+  --color-border: #64748b;
+  --color-accent: #0369a1;
+  --color-on-accent: #ffffff;
+  --color-success: #15803d;
+  --color-error: #b91c1c;
+
+  --font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+
+  --radius: 0.75rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0f172a;
+    --color-surface: #1e293b;
+    --color-text: #f8fafc;
+    --color-text-muted: #cbd5e1;
+    --color-border: #94a3b8;
+    --color-accent: #38bdf8;
+    --color-on-accent: #0f172a;
+    --color-success: #86efac;
+    --color-error: #fca5a5;
+  }
+}
+
+
+/* =====================================================
+   02. RESET
+   ===================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-family);
+  line-height: 1.6;
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+ol {
+  list-style: none;
+}
+
+input,
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+
+/* =====================================================
+   03. PAGE LAYOUT
+   ===================================================== */
+
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -100%;
+  padding: var(--space-2) var(--space-4);
+  color: var(--color-on-accent);
+  background: var(--color-accent);
+  border-radius: var(--radius);
+}
+
+.skip-link:focus {
+  top: var(--space-4);
+}
+
+.site-header,
+main,
+.site-footer {
+  width: min(100% - 2 * var(--space-4), 40rem);
+  margin-inline: auto;
+}
+
+.site-header {
+  padding-block: var(--space-6) var(--space-4);
+}
+
+.eyebrow {
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+}
+
+.site-header p:last-child,
+.site-footer {
+  color: var(--color-text-muted);
+}
+
+main {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.card {
+  padding: var(--space-6) var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+h2 {
+  margin-bottom: var(--space-3);
+  font-size: 1.25rem;
+}
+
+.site-footer {
+  padding-block: var(--space-6);
+  font-size: 0.875rem;
+}
+
+
+/* =====================================================
+   04. COUNTDOWN
+   ===================================================== */
+
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.countdown span {
+  display: block;
+  font-size: clamp(1.5rem, 8vw, 2.5rem);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text);
+}
+
+.countdown-note {
+  color: var(--color-text-muted);
+}
+
+
+/* =====================================================
+   05. FORM & STATES
+   ===================================================== */
+
+#register-form {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.field {
+  display: grid;
+  gap: var(--space-1);
+}
+
+label {
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+small {
+  color: var(--color-text-muted);
+}
+
+button[type="submit"] {
+  justify-self: start;
+  padding: var(--space-2) var(--space-6);
+  font-weight: 600;
+  color: var(--color-on-accent);
+  background: var(--color-accent);
+  border: 0;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+button[type="submit"]:disabled {
+  cursor: progress;
+  opacity: 0.7;
+}
+
+.form-status:empty {
+  display: none;
+}
+
+#register-form[data-state="success"] .form-status {
+  color: var(--color-success);
+}
+
+#register-form[data-state="error"] .form-status {
+  color: var(--color-error);
+}
