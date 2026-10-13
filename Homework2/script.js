@@ -47,4 +47,23 @@
   pads.forEach((pad) => {
     pad.addEventListener("click", () => triggerPad(pad));
   });
+
+
+  /* ---------------------------------------------------
+     03. KEYBOARD LISTENER (T-04)
+     Map lookup instead of a selector string, so keys
+     like " or \ can never break querySelector.
+     --------------------------------------------------- */
+
+  const padsByKey = new Map(
+    [...pads].map((pad) => [pad.dataset.key, pad])
+  );
+
+  window.addEventListener("keydown", (event) => {
+    if (event.repeat) return; // Held key: play once, no audio flood
+    if (event.ctrlKey || event.altKey || event.metaKey) return;
+
+    const pad = padsByKey.get(event.key.toLowerCase());
+    if (pad) triggerPad(pad);
+  });
 })();
