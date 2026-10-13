@@ -112,20 +112,51 @@
   }
 
   const form = document.querySelector("#register-form");
+  const nameField = form.elements.namedItem("name");
+  const emailField = form.elements.namedItem("email");
+  const submitButton = form.querySelector('button[type="submit"]');
   const statusText = form.querySelector(".form-status");
 
   function setFormState(state, message) {
+    const busy = state === "submitting";
+
     form.dataset.state = state;
-    statusText.textContent = message;
+    form.setAttribute("aria-busy", busy);
+    submitButton.disabled = busy;
+    statusText.textContent = message; // textContent: user text is never parsed as HTML
   }
+
+
+  /* ---------------------------------------------------
+     SLICE 3: DOUBLE-SUBMIT GUARD & SANITIZATION
+     --------------------------------------------------- */
+
+  // Control characters become spaces, whitespace runs collapse, length is capped.
+  // input.maxLength is -1 when the attribute is missing: slice(0, -1) would eat a char.
+  function sanitizeText(value, maxLength) {
+    return value
+      .replace(/\p{Cc}/gu, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+      .slice(0, maxLength > 0 ? maxLength : undefined);
+  }
+
+  nameField.addEventListener("input", () => nameField.setCustomValidity(""));
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    if (!form.reportValidity()) return;
+    if (form.dataset.state === "submitting") return; // Double-submit guard
 
-    const data = new FormData(form);
-    const name = data.get("name");
-    const email = data.get("email");
+    // Sanitize first, then validate what will actually be sent.
+    const name = sanitizeText(nameField.value, nameField.maxLength);
+    const email = sanitizeText(emailField.value, emailField.maxLength).toLowerCase();
+    nameField.value = name;
+    emailField.value = email;
+
+    nameField.setCustomValidity(
+      name.length < 2 ? "Please enter your full name (at least 2 characters)." : ""
+    );
+    if (!form.reportValidity()) return;
 
     setFormState("submitting", "Sending your registration...");
 
