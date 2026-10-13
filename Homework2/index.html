@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Keyboard drum kit with a polyphonic audio engine and a FIFO beat recorder.">
+
+  <title>Drum Kit Engine</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <h1>Drum Kit Engine</h1>
+    <p>Press a key or click a pad to play.</p>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ========================================
+         DATA CONTRACT
+         data-key   : lowercase event.key that triggers the pad
+         data-sound : audio file played by the engine
+         ======================================== -->
+
+    <section class="drum-kit" aria-labelledby="pads-title">
+      <h2 id="pads-title">Pads</h2>
+
+      <ul class="pad-grid">
+        <li><button class="drum-pad" type="button" data-key="a" data-sound="sounds/kick.wav"><kbd>A</kbd> Kick</button></li>
+        <li><button class="drum-pad" type="button" data-key="s" data-sound="sounds/snare.wav"><kbd>S</kbd> Snare</button></li>
+        <li><button class="drum-pad" type="button" data-key="d" data-sound="sounds/hihat.wav"><kbd>D</kbd> Hi-hat</button></li>
+        <li><button class="drum-pad" type="button" data-key="f" data-sound="sounds/openhat.wav"><kbd>F</kbd> Open hat</button></li>
+        <li><button class="drum-pad" type="button" data-key="g" data-sound="sounds/clap.wav"><kbd>G</kbd> Clap</button></li>
+        <li><button class="drum-pad" type="button" data-key="h" data-sound="sounds/tom-low.wav"><kbd>H</kbd> Low tom</button></li>
+        <li><button class="drum-pad" type="button" data-key="j" data-sound="sounds/tom-high.wav"><kbd>J</kbd> High tom</button></li>
+        <li><button class="drum-pad" type="button" data-key="k" data-sound="sounds/ride.wav"><kbd>K</kbd> Ride</button></li>
+        <li><button class="drum-pad" type="button" data-key="l" data-sound="sounds/crash.wav"><kbd>L</kbd> Crash</button></li>
+      </ul>
+    </section>
+
+    <section class="recorder" aria-labelledby="recorder-title">
+      <h2 id="recorder-title">Beat Recorder</h2>
+
+      <menu class="recorder-controls">
+        <li><button type="button" data-action="record">Record</button></li>
+        <li><button type="button" data-action="play">Play</button></li>
+        <li><button type="button" data-action="stop">Stop</button></li>
+      </menu>
+
+      <p class="recorder-status" aria-live="polite">Idle. 0 beats recorded.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Homework 2 &mdash; Web Application Development, UIT</p>
+  </footer>
+
+</body>
+
+</html>
