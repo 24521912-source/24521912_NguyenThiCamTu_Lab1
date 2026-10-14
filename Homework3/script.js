@@ -50,7 +50,7 @@
 
     if (remaining <= 0) {
       renderCountdown(0);
-      countdownNote.textContent = "The event has started.";
+      countdownNote.textContent = "The final pitch is live!";
       document.removeEventListener("visibilitychange", onVisible);
       return; // No new timer: nothing left to leak.
     }
@@ -102,7 +102,7 @@
         if (!navigator.onLine) {
           reject(new Error("You are offline. Check your connection and try again."));
         } else if (registeredEmails.has(email)) {
-          reject(new Error("This email is already registered."));
+          reject(new Error("This email has already registered a team."));
         } else {
           registeredEmails.add(email);
           resolve();
@@ -158,11 +158,11 @@
     );
     if (!form.reportValidity()) return;
 
-    setFormState("submitting", "Sending your registration...");
+    setFormState("submitting", "Submitting your team registration...");
 
     try {
       await registerAttendee({ name, email });
-      setFormState("success", `Thanks, ${name}! Your ticket is on its way to ${email}.`);
+      setFormState("success", `Thanks, ${name}! Your team is registered. Next steps are on their way to ${email}.`);
       form.reset();
     } catch (error) {
       setFormState("error", error.message);

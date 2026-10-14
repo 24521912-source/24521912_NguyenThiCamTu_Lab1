@@ -71,7 +71,7 @@ check("at 2.5s left", a.at(2500), "00:00:00:03");
 check("at 1.999s left", a.at(1999), "00:00:00:02");
 check("at 0.999s left", a.at(999), "00:00:00:01");
 check("at 0 left", a.at(0), "00:00:00:00");
-check("started note", a.note.textContent, "The event has started.");
+check("started note", a.note.textContent, "The final pitch is live!");
 check("no timer left after start", a.timers.length, 0);
 
 // Timer that fires exactly on the boundary (0ms lateness) must not freeze display.

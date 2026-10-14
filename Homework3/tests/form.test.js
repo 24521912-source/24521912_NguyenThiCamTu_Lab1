@@ -86,7 +86,7 @@ const check = (name, got, want) => {
   check("submitting state", form.dataset.state, "submitting");
   await flush();
   check("success state", form.dataset.state, "success");
-  check("success message", statusText.textContent, "Thanks, Cam Tu! Your ticket is on its way to tu@uit.edu.vn.");
+  check("success message", statusText.textContent, "Thanks, Cam Tu! Your team is registered. Next steps are on their way to tu@uit.edu.vn.");
 
   // Error: duplicate email
   nameField.value = "Cam Tu"; emailField.value = "tu@uit.edu.vn";
@@ -130,7 +130,7 @@ const check = (name, got, want) => {
   const payload = "<img src=x onerror=alert(1)>";
   nameField.value = `  ${payload}\u0000\n  Jr  `; emailField.value = "x@uit.edu.vn";
   form.submit(); await flush();
-  check("payload rendered as text", statusText.textContent, `Thanks, ${payload} Jr! Your ticket is on its way to x@uit.edu.vn.`);
+  check("payload rendered as text", statusText.textContent, `Thanks, ${payload} Jr! Your team is registered. Next steps are on their way to x@uit.edu.vn.`);
 
   check("no innerHTML in source", /\.innerHTML/.test(src), false);
   process.exitCode = failures ? 1 : 0;
