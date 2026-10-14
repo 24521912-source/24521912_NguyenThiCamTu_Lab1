@@ -12,8 +12,8 @@
 :root {
   color-scheme: light dark;
 
-  /* Light: photocopied punk zine on poster paper */
-  --color-bg: #f3ead3;
+  /* Light: one solid pastel lavender background */
+  --color-bg: #ece6fa;
   --color-surface: #fffdf6;
   --color-text: #141414;
   --color-text-muted: #3f3a33;
@@ -30,9 +30,6 @@
   --color-on-pop-2: #ffffff;
   --color-on-pop-3: #141414;
   --color-sticker-edge: #ffffff;
-  --color-spot-1: rgb(193 18 31 / 0.12);
-  --color-spot-2: rgb(255 214 10 / 0.25);
-  --color-dot: rgb(20 20 20 / 0.08);
   --color-ring: rgb(20 20 20 / 0.12);
   --color-led-bg: #141414;
   --color-led: #39ff14;
@@ -65,7 +62,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* Dark: black stage under red and purple spotlights */
+    /* Dark: one solid black stage background */
     --color-bg: #0b0b0f;
     --color-surface: #17171d;
     --color-text: #f5f5f5;
@@ -79,9 +76,6 @@
     --color-pop-3: #ffd60a;
     --color-on-pop-1: #0b0b0f;
     --color-on-pop-2: #0b0b0f;
-    --color-spot-1: rgb(255 59 92 / 0.28);
-    --color-spot-2: rgb(123 44 191 / 0.35);
-    --color-dot: rgb(255 255 255 / 0.06);
     --color-ring: rgb(255 255 255 / 0.1);
   }
 }
@@ -105,12 +99,7 @@ body {
   font-family: var(--font-family);
   line-height: 1.6;
   color: var(--color-text);
-  background:
-    radial-gradient(circle at 15% 0%, var(--color-spot-1), transparent 45%),
-    radial-gradient(circle at 85% 10%, var(--color-spot-2), transparent 45%),
-    radial-gradient(var(--color-dot) 1px, transparent 1.5px) 0 0 / 14px 14px,
-    var(--color-bg);
-  background-attachment: fixed;
+  background: var(--color-bg);
 }
 
 ul,
