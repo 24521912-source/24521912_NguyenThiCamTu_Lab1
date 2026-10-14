@@ -1,6 +1,7 @@
 /* =====================================================
    HOMEWORK 2 - DRUM KIT ENGINE
    TASK T-02: Design tokens, reset, responsive pad grid
+   Theme: rock gig poster (light = punk zine, dark = stage)
    ===================================================== */
 
 
@@ -11,15 +12,39 @@
 :root {
   color-scheme: light dark;
 
-  --color-bg: #f8fafc;
-  --color-surface: #ffffff;
-  --color-text: #0f172a;
-  --color-text-muted: #475569;
-  --color-border: #64748b;
-  --color-accent: #0369a1;
+  /* Light: photocopied punk zine on poster paper */
+  --color-bg: #f3ead3;
+  --color-surface: #fffdf6;
+  --color-text: #141414;
+  --color-text-muted: #3f3a33;
+  --color-border: #141414;
+  --color-accent: #c1121f;
   --color-on-accent: #ffffff;
 
+  --color-yellow: #ffd60a;
+  --color-on-yellow: #141414;
+  --color-pop-1: #c1121f;
+  --color-pop-2: #1d4ed8;
+  --color-pop-3: #ffd60a;
+  --color-on-pop-1: #ffffff;
+  --color-on-pop-2: #ffffff;
+  --color-on-pop-3: #141414;
+  --color-sticker-edge: #ffffff;
+  --color-spot-1: rgb(193 18 31 / 0.12);
+  --color-spot-2: rgb(255 214 10 / 0.25);
+  --color-dot: rgb(20 20 20 / 0.08);
+  --color-ring: rgb(20 20 20 / 0.12);
+  --color-led-bg: #141414;
+  --color-led: #39ff14;
+
+  /* Mascot illustration */
+  --mascot-ink: #141414;
+  --mascot-shine: #ffffff;
+  --mascot-blush: rgb(255 120 160 / 0.75);
+  --mascot-wood: #e9b872;
+
   --font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: Impact, Haettenschweiler, "Arial Narrow Bold", "Arial Black", sans-serif;
   --font-mono: ui-monospace, Consolas, monospace;
 
   --space-2: 0.5rem;
@@ -28,19 +53,36 @@
   --space-6: 1.5rem;
 
   --radius: 0.75rem;
-  --pad-height: 6rem;
+  --border: 3px solid var(--color-border);
+  --pad-height: 8rem;
   --transition: 80ms ease-out;
+  --bounce: 160ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Decorative drawings, painted through mask so token colors apply */
+  --shape-bolt: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M13 2 4 14h6l-1 8 9-12h-6z'/%3E%3C/svg%3E");
+  --shape-notes: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M21 3v12.5a3.5 3.5 0 1 1-2-3.16V7.3L10 9v8.5a3.5 3.5 0 1 1-2-3.16V5z'/%3E%3C/svg%3E");
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: #0f172a;
-    --color-surface: #1e293b;
-    --color-text: #f8fafc;
-    --color-text-muted: #cbd5e1;
-    --color-border: #94a3b8;
-    --color-accent: #38bdf8;
-    --color-on-accent: #0f172a;
+    /* Dark: black stage under red and purple spotlights */
+    --color-bg: #0b0b0f;
+    --color-surface: #17171d;
+    --color-text: #f5f5f5;
+    --color-text-muted: #c8c8d0;
+    --color-border: #f5f5f5;
+    --color-accent: #ff3b5c;
+    --color-on-accent: #0b0b0f;
+
+    --color-pop-1: #ff3b5c;
+    --color-pop-2: #00e5ff;
+    --color-pop-3: #ffd60a;
+    --color-on-pop-1: #0b0b0f;
+    --color-on-pop-2: #0b0b0f;
+    --color-spot-1: rgb(255 59 92 / 0.28);
+    --color-spot-2: rgb(123 44 191 / 0.35);
+    --color-dot: rgb(255 255 255 / 0.06);
+    --color-ring: rgb(255 255 255 / 0.1);
   }
 }
 
@@ -59,10 +101,16 @@
 
 body {
   min-height: 100vh;
+  overflow-x: clip;
   font-family: var(--font-family);
   line-height: 1.6;
   color: var(--color-text);
-  background: var(--color-bg);
+  background:
+    radial-gradient(circle at 15% 0%, var(--color-spot-1), transparent 45%),
+    radial-gradient(circle at 85% 10%, var(--color-spot-2), transparent 45%),
+    radial-gradient(var(--color-dot) 1px, transparent 1.5px) 0 0 / 14px 14px,
+    var(--color-bg);
+  background-attachment: fixed;
 }
 
 ul,
@@ -88,6 +136,7 @@ button {
 
 .skip-link {
   position: absolute;
+  z-index: 10;
   left: var(--space-4);
   top: -100%;
   padding: var(--space-2) var(--space-4);
@@ -108,12 +157,40 @@ main,
 }
 
 .site-header {
-  padding-block: var(--space-6) var(--space-4);
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  column-gap: var(--space-4);
+  padding-block: 4.5rem var(--space-4);
 }
 
-.site-header p,
-.site-footer {
-  color: var(--color-text-muted);
+.site-header h1,
+.site-header p {
+  grid-column: 1;
+}
+
+.site-header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 13vw, 4.75rem);
+  font-weight: 400;
+  line-height: 0.95;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-shadow: 3px 3px 0 var(--color-pop-1), 6px 6px 0 var(--color-pop-2);
+  rotate: -2deg;
+}
+
+/* Tagline as a strip of yellow gaffer tape */
+.site-header p {
+  justify-self: start;
+  margin-top: var(--space-4);
+  padding: 0.125rem var(--space-3);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-on-yellow);
+  background: var(--color-yellow);
+  rotate: 1.5deg;
 }
 
 main {
@@ -121,86 +198,547 @@ main {
   gap: var(--space-6);
 }
 
+section {
+  position: relative;
+}
+
+/* Section titles as stencilled road-case labels */
 h2 {
-  margin-bottom: var(--space-3);
-  font-size: 1.25rem;
+  display: inline-block;
+  margin-bottom: var(--space-4);
+  padding: 0 var(--space-3);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-bg);
+  background: var(--color-text);
+  rotate: -1deg;
 }
 
 .site-footer {
   padding-block: var(--space-6);
   font-size: 0.875rem;
+  color: var(--color-text-muted);
 }
 
 
 /* =====================================================
-   04. DRUM PAD GRID
+   04. STICKERS & DRAWINGS (decorative, empty alt text)
+   ===================================================== */
+
+/* Text stickers: die-cut white edge, hard shadow */
+.site-header::before,
+.recorder::after,
+.site-footer::before {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-on-yellow);
+  background: var(--color-yellow);
+  border: 3px solid var(--color-sticker-edge);
+  border-radius: 0.5rem;
+  box-shadow: 3px 3px 0 var(--color-border);
+  pointer-events: none;
+}
+
+.site-header::before {
+  content: "Rock on \1F918" / "";
+  position: absolute;
+  top: var(--space-4);
+  right: 0;
+  padding: 0.125rem var(--space-3);
+  font-size: 1.25rem;
+  rotate: 7deg;
+}
+
+.recorder::after {
+  content: "\1F3A4  Live" / "";
+  position: absolute;
+  top: -0.25rem;
+  right: 0;
+  padding: 0 var(--space-2);
+  font-size: 1.125rem;
+  rotate: -6deg;
+}
+
+.site-footer::before {
+  content: "\2605  Keep it loud \2605" / "";
+  display: inline-block;
+  margin-bottom: var(--space-3);
+  padding: 0 var(--space-3);
+  font-size: 1.125rem;
+  rotate: -2deg;
+}
+
+/* Emoji stickers: round badge */
+.site-header::after,
+.drum-kit::after {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  width: 3.5rem;
+  aspect-ratio: 1;
+  font-size: 1.75rem;
+  background: var(--color-accent);
+  border: 3px solid var(--color-sticker-edge);
+  border-radius: 50%;
+  box-shadow: 3px 3px 0 var(--color-border);
+  pointer-events: none;
+  rotate: var(--tilt);
+  animation: swing 2.4s ease-in-out infinite alternate;
+}
+
+@keyframes swing {
+  from { rotate: calc(var(--tilt) - 8deg); }
+  to { rotate: calc(var(--tilt) + 8deg); }
+}
+
+.site-header::after {
+  content: "\1F3B8" / "";
+  --tilt: -14deg;
+  top: var(--space-2);
+  left: 0;
+}
+
+.drum-kit::after {
+  content: "\1F941" / "";
+  --tilt: 12deg;
+  top: -0.75rem;
+  right: 0;
+}
+
+/* Drawings pinned in the side margins; hidden when there are no
+   margins so they never sit under text */
+@media (width >= 56rem) {
+  body::before,
+  body::after {
+    content: "";
+    position: fixed;
+    z-index: -1;
+    pointer-events: none;
+    mask: var(--shape) center / contain no-repeat;
+    animation: float 5s ease-in-out infinite alternate;
+  }
+
+  body::after {
+    animation-delay: -2.5s;
+  }
+
+  body::before {
+    --shape: var(--shape-bolt);
+    top: 14vh;
+    right: 3%;
+    width: 5rem;
+    height: 7rem;
+    background: var(--color-yellow);
+    rotate: 14deg;
+  }
+
+  body::after {
+    --shape: var(--shape-notes);
+    bottom: 6vh;
+    left: 3%;
+    width: 5rem;
+    height: 5rem;
+    background: var(--color-accent);
+    rotate: -12deg;
+  }
+
+  @keyframes float {
+    to { translate: 0 -1.25rem; }
+  }
+}
+
+
+/* =====================================================
+   05. MASCOT (decorative SVG, drums along to the beat)
+   ===================================================== */
+
+.mascot {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  width: clamp(5.5rem, 24vw, 8.5rem);
+  overflow: visible;
+}
+
+.m-wood {
+  fill: none;
+  stroke: var(--mascot-wood);
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+.m-tip {
+  fill: var(--mascot-wood);
+  stroke: var(--color-border);
+  stroke-width: 2;
+}
+
+.m-shell {
+  fill: var(--color-accent);
+  stroke: var(--color-border);
+  stroke-width: 3;
+}
+
+.m-head {
+  fill: var(--color-surface);
+  stroke: var(--color-border);
+  stroke-width: 3;
+}
+
+.m-rim {
+  fill: none;
+  stroke: var(--color-yellow);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.m-hair {
+  fill: var(--color-pop-2);
+  stroke: var(--color-border);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+
+.m-leg {
+  stroke: var(--color-border);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.m-shoe {
+  fill: var(--color-border);
+}
+
+.m-eye {
+  fill: var(--mascot-ink);
+}
+
+.m-shine {
+  fill: var(--mascot-shine);
+}
+
+.m-cheek {
+  fill: var(--mascot-blush);
+}
+
+.m-mouth {
+  fill: none;
+  stroke: var(--mascot-ink);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+/* Idle: sticks tap in turn, body bobs, eyes blink */
+.m-stick,
+.m-body,
+.m-eyes {
+  transform-box: fill-box;
+}
+
+.m-stick-left {
+  transform-origin: 0 0;
+  animation: tap-left 0.8s ease-in-out infinite;
+}
+
+.m-stick-right {
+  transform-origin: 100% 0;
+  animation: tap-right 0.8s ease-in-out infinite;
+}
+
+.m-body {
+  transform-origin: 50% 100%;
+  animation: bob 0.4s ease-in-out infinite alternate;
+}
+
+.m-eyes {
+  transform-origin: center;
+  animation: blink 4s infinite;
+}
+
+@keyframes tap-left {
+  0%, 50%, 100% { rotate: 0deg; }
+  25% { rotate: -16deg; }
+}
+
+@keyframes tap-right {
+  0%, 50%, 100% { rotate: 0deg; }
+  75% { rotate: 16deg; }
+}
+
+@keyframes bob {
+  to { translate: 0 -3px; }
+}
+
+@keyframes blink {
+  0%, 92%, 100% { scale: 1 1; }
+  96% { scale: 1 0.1; }
+}
+
+/* Any pad hit: both sticks slam down, body squashes, eyes pop */
+body:has(.drum-pad.active) .m-stick {
+  animation: none;
+}
+
+body:has(.drum-pad.active) .m-body {
+  animation: squash 160ms ease-out;
+}
+
+body:has(.drum-pad.active) .m-eyes {
+  animation: none;
+  scale: 1.25;
+}
+
+@keyframes squash {
+  from { scale: 1.08 0.9; }
+}
+
+
+/* =====================================================
+   06. DRUM PAD GRID
    ===================================================== */
 
 .pad-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-3);
+  gap: var(--space-4);
 }
+
+/* Each pad wears its own colour and tilt, like stickers on a case */
+.pad-grid li:nth-child(3n + 1) { --pad-pop: var(--color-pop-1); --pad-ink: var(--color-on-pop-1); }
+.pad-grid li:nth-child(3n + 2) { --pad-pop: var(--color-pop-2); --pad-ink: var(--color-on-pop-2); }
+.pad-grid li:nth-child(3n + 3) { --pad-pop: var(--color-pop-3); --pad-ink: var(--color-on-pop-3); }
+.pad-grid li:nth-child(odd) .drum-pad { rotate: -1.5deg; }
+.pad-grid li:nth-child(even) .drum-pad { rotate: 1.5deg; }
 
 .drum-pad {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2);
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 0.375rem;
   width: 100%;
   min-height: var(--pad-height);
-  padding: var(--space-2);
-  background: var(--color-surface);
-  border: 2px solid var(--color-border);
+  padding: var(--space-3) var(--space-2);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  /* Drumhead ring behind the label */
+  background:
+    radial-gradient(circle, transparent 0 36%, var(--color-ring) 37% 40%, transparent 41%),
+    var(--color-surface);
+  border: var(--border);
   border-radius: var(--radius);
-  transition: transform var(--transition), background var(--transition);
+  box-shadow: 5px 5px 0 var(--pad-pop);
+  transition: translate var(--transition), scale var(--transition),
+    box-shadow var(--transition), background var(--transition);
 }
 
+.drum-pad:hover {
+  translate: -2px -2px;
+  box-shadow: 7px 7px 0 var(--pad-pop);
+}
+
+/* Sound icon in a coloured sticker disc */
+.pad-icon {
+  width: 3rem;
+  height: 3rem;
+  padding: 0.5rem;
+  color: var(--pad-ink);
+  background: var(--pad-pop);
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+  transition: rotate var(--bounce), scale var(--bounce);
+}
+
+.drum-pad:hover .pad-icon {
+  rotate: -10deg;
+  scale: 1.08;
+}
+
+/* Key hint as a physical keycap */
 .drum-pad kbd {
-  font-family: var(--font-mono);
-  font-size: 1.5rem;
-  font-weight: 700;
+  min-width: 2rem;
+  padding: 0 0.375rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: 0.375rem;
+  box-shadow: 0 3px 0 var(--color-border);
+}
+
+.pad-label {
+  font-size: 0.75rem;
+  line-height: 1.2;
+}
+
+/* Shockwave ring: shown instantly on hit, expands and fades after */
+.drum-pad::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border: 3px solid var(--pad-pop);
+  border-radius: calc(var(--radius) + 6px);
+  opacity: 0;
+  scale: 1.12;
+  transition: opacity 300ms ease-out, scale 300ms ease-out;
+  pointer-events: none;
 }
 
 .drum-pad.active {
   color: var(--color-on-accent);
   background: var(--color-accent);
-  border-color: var(--color-accent);
-  transform: scale(0.95);
+  box-shadow: 1px 1px 0 var(--pad-pop);
+  translate: 4px 4px;
+  scale: 0.96;
+}
+
+.drum-pad.active .pad-icon {
+  rotate: 12deg;
+  scale: 1.2;
+}
+
+.drum-pad.active kbd {
+  translate: 0 2px;
+  box-shadow: 0 1px 0 var(--color-border);
+}
+
+.drum-pad.active::after {
+  opacity: 1;
+  scale: 1;
+  transition: none;
+}
+
+/* Music note that floats out of a pad on every hit (spawned by JS) */
+.pad-note {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  font-size: 1.75rem;
+  line-height: 1;
+  color: var(--pad-pop);
+  -webkit-text-stroke: 1px var(--color-border);
+  pointer-events: none;
+  animation: note-float 800ms ease-out forwards;
+}
+
+@keyframes note-float {
+  from {
+    opacity: 1;
+    translate: -50% 0;
+    scale: 0.6;
+  }
+
+  60% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    translate: calc(-50% + var(--drift, 0px)) -3.5rem;
+    scale: 1.3;
+    rotate: 15deg;
+  }
 }
 
 
 /* =====================================================
-   05. RECORDER
+   07. RECORDER (amp panel)
    ===================================================== */
+
+.recorder {
+  padding: var(--space-4);
+  background:
+    repeating-linear-gradient(45deg, var(--color-ring) 0 2px, transparent 2px 8px),
+    var(--color-surface);
+  border: var(--border);
+  border-radius: var(--radius);
+  box-shadow: 6px 6px 0 var(--color-pop-2);
+}
 
 .recorder-controls {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
 }
 
 .recorder-controls button {
   padding: var(--space-2) var(--space-4);
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
   background: var(--color-surface);
-  border: 2px solid var(--color-border);
+  border: var(--border);
   border-radius: var(--radius);
+  box-shadow: 3px 3px 0 var(--color-border);
 }
 
 .recorder-controls button[aria-pressed="true"] {
   color: var(--color-on-accent);
   background: var(--color-accent);
-  border-color: var(--color-accent);
 }
 
+/* Red REC lamp on the record button */
+[data-action="record"]::before {
+  content: "\25CF" / "";
+  margin-right: 0.375rem;
+  color: var(--color-accent);
+}
+
+[data-action="record"][aria-pressed="true"]::before {
+  color: var(--color-on-accent);
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Status as an LED readout */
 .recorder-status {
-  color: var(--color-text-muted);
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-mono);
+  color: var(--color-led);
+  background: var(--color-led-bg);
+  border-radius: 0.375rem;
+}
+
+.recorder-status::before {
+  content: "";
+  display: inline-block;
+  width: 1.25rem;
+  height: 0.875rem;
+  margin-right: var(--space-2);
+  background:
+    linear-gradient(var(--color-led) 0 0) 0 100% / 3px 40% no-repeat,
+    linear-gradient(var(--color-led) 0 0) 33.3% 100% / 3px 70% no-repeat,
+    linear-gradient(var(--color-led) 0 0) 66.6% 100% / 3px 50% no-repeat,
+    linear-gradient(var(--color-led) 0 0) 100% 100% / 3px 30% no-repeat;
+}
+
+.recorder:has([aria-pressed="true"]) .recorder-status::before {
+  animation: eq 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes eq {
+  0% { background-size: 3px 40%, 3px 70%, 3px 50%, 3px 30%; }
+  50% { background-size: 3px 90%, 3px 30%, 3px 100%, 3px 60%; }
+  100% { background-size: 3px 20%, 3px 100%, 3px 40%, 3px 90%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .drum-pad {
-    transition: none;
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
   }
 }
