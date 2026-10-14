@@ -31,6 +31,11 @@
   --color-chart-bar: #6366f1;
   --color-chart-axis: rgb(255 255 255 / 0.35);
   --color-hero-glow: rgb(99 102 241 / 0.35);
+  --color-countdown-to: #3730a3;
+  --color-tile: rgb(255 255 255 / 0.08);
+  --color-tile-border: rgb(255 255 255 / 0.18);
+  --color-gold-ring: rgb(251 191 36 / 0.18);
+  --color-gold-glow: rgb(251 191 36 / 0.35);
 
   --font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
 
@@ -62,6 +67,7 @@
     --color-error: #fca5a5;
 
     --color-hero-bg: #1e1b4b;
+    --color-countdown-to: #312e81;
     --shadow: none;
   }
 }
@@ -170,7 +176,7 @@ h3 {
   display: grid;
   gap: var(--space-8);
   align-items: center;
-  padding: var(--space-12) var(--gutter);
+  padding: var(--space-12) var(--gutter) calc(2 * var(--space-12));
   color: var(--color-on-hero);
   background:
     radial-gradient(circle at 100% 0%, var(--color-hero-glow), transparent 55%),
@@ -414,33 +420,112 @@ h3 {
    06. COUNTDOWN
    ===================================================== */
 
+/* Dark navy card with a gold frame, pulled up over the hero */
+.countdown-card {
+  margin-top: calc(-1 * (var(--space-12) + var(--space-8)));
+  padding: var(--space-8) var(--space-4);
+  text-align: center;
+  color: var(--color-on-hero);
+  background:
+    radial-gradient(circle at 50% 0%, var(--color-hero-glow), transparent 60%),
+    linear-gradient(135deg, var(--color-hero-bg), var(--color-countdown-to));
+  border: 2px solid var(--color-gold);
+  border-radius: calc(var(--radius) * 1.5);
+  box-shadow: 0 0 0 6px var(--color-gold-ring), 0 18px 40px var(--color-gold-glow);
+}
+
+/* Title as a gold LIVE label with a pulsing dot */
+.countdown-card h2 {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+  font-size: 0.9375rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-gold);
+}
+
+.countdown-card h2::before {
+  content: "";
+  width: 10px;
+  aspect-ratio: 1;
+  background: var(--color-gold);
+  border-radius: 50%;
+  animation: live-pulse 1.6s ease-out infinite;
+}
+
+@keyframes live-pulse {
+  from { box-shadow: 0 0 0 0 var(--color-gold-glow); }
+  to { box-shadow: 0 0 0 10px transparent; }
+}
+
 .countdown {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-2);
-  margin-bottom: var(--space-4);
-  text-align: center;
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
+  margin-bottom: var(--space-6);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-on-hero-muted);
 }
 
 .countdown li {
-  padding-block: var(--space-3);
-  background: var(--color-bg);
+  position: relative;
+  padding: var(--space-4) var(--space-1) var(--space-3);
+  background: var(--color-tile);
+  border: 1px solid var(--color-tile-border);
   border-radius: var(--radius);
 }
 
 .countdown span {
   display: block;
-  font-size: clamp(1.5rem, 8vw, 2.75rem);
+  margin-bottom: var(--space-2);
+  font-size: clamp(2rem, 11vw, 4.5rem);
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1;
   font-variant-numeric: tabular-nums;
-  color: var(--color-accent);
+  color: var(--color-on-hero);
+}
+
+/* Seconds in gold: the number that visibly moves */
+.countdown li:last-child span {
+  color: var(--color-gold);
 }
 
 .countdown-note {
-  color: var(--color-text-muted);
+  color: var(--color-on-hero-muted);
+}
+
+.countdown-note time {
+  font-weight: 700;
+  color: var(--color-on-hero);
+}
+
+/* Wide screens: more room, colon separators between the tiles */
+@media (width >= 48rem) {
+  .countdown-card {
+    padding-inline: var(--space-8);
+  }
+
+  .countdown {
+    gap: var(--space-6);
+    max-width: 44rem;
+    margin-inline: auto;
+  }
+
+  .countdown li:not(:last-child)::after {
+    content: ":" / "";
+    position: absolute;
+    top: 50%;
+    right: calc(-1 * var(--space-6) / 2);
+    translate: 50% -60%;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-on-hero-muted);
+  }
 }
 
 
