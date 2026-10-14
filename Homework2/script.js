@@ -38,9 +38,28 @@
   const PAD_FLASH_MS = 100;
   const pads = document.querySelectorAll(".drum-pad");
 
+  const NOTE_GLYPHS = ["♪", "♫", "♬"]; // ♪ ♫ ♬
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  // A note floats out of the pad and removes itself when its animation ends.
+  function spawnNote(pad) {
+    // Reduced motion disables the animation, so animationend would never
+    // fire and the notes would pile up in the DOM.
+    if (reducedMotion.matches) return;
+
+    const note = document.createElement("span");
+    note.className = "pad-note";
+    note.setAttribute("aria-hidden", "true");
+    note.textContent = NOTE_GLYPHS[Math.floor(Math.random() * NOTE_GLYPHS.length)];
+    note.style.setProperty("--drift", `${Math.round(Math.random() * 40 - 20)}px`);
+    note.addEventListener("animationend", () => note.remove());
+    pad.append(note);
+  }
+
   function triggerPad(pad) {
     playSound(pad.dataset.sound);
     recordBeat(pad.dataset.key);
+    spawnNote(pad);
     pad.classList.add("active");
     setTimeout(() => pad.classList.remove("active"), PAD_FLASH_MS);
   }
