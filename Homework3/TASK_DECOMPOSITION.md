@@ -5,6 +5,11 @@ Build an event landing page with a drift-free countdown and a
 registration form that survives slow networks, errors, double
 submits, and hostile input. HTML5, CSS3, and Vanilla JavaScript only.
 
+The event is **UIT Startup Challenge 2026** (fictional): a startup
+competition for students with ideas in economics, finance, e-commerce
+and business. The countdown targets the final pitch day; the form
+registers a team through its team leader.
+
 ## Contracts (defined before any JavaScript)
 
 ### Countdown contract
@@ -36,7 +41,7 @@ submits, and hostile input. HTML5, CSS3, and Vanilla JavaScript only.
   No counter is decremented, so delayed timers never accumulate error.
 - Next tick is scheduled for the next whole-second boundary
   (`remaining % 1000`), not a fixed `setInterval(1000)`.
-- At zero: show "The event has started" and stop scheduling (no leaked timer).
+- At zero: show "The final pitch is live!" and stop scheduling (no leaked timer).
 - Show the start time in the visitor's own timezone with `Intl.DateTimeFormat`.
 
 ### Slice 2 / T-02: State-machine form
@@ -71,4 +76,12 @@ success / error --submit--> submitting
 4. feat(js): implement drift-free countdown engine
 5. feat(js): implement registration form state machine
 6. feat(js): prevent double submit and sanitize input
-7. docs(audit): record AI failure modes
+7. test(js): add fake-clock countdown and form state checks
+8. docs(audit): record AI failure modes
+
+### Theme change: UIT Startup Challenge
+Logic and contracts above are unchanged; only content, styling and copy.
+9. feat(html): rebrand landing page as student startup challenge
+10. style(css): navy and gold business theme for startup challenge
+11. feat(js): update countdown and form messages for startup challenge
+12. docs(spec): describe startup challenge theme
