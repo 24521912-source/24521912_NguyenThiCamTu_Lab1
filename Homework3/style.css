@@ -30,12 +30,9 @@
   --color-on-gold: #0b1b3a;
   --color-chart-bar: #6366f1;
   --color-chart-axis: rgb(255 255 255 / 0.35);
-  --color-hero-glow: rgb(99 102 241 / 0.35);
-  --color-countdown-to: #3730a3;
+  --color-countdown-bg: #312e81;
   --color-tile: rgb(255 255 255 / 0.08);
   --color-tile-border: rgb(255 255 255 / 0.18);
-  --color-gold-ring: rgb(251 191 36 / 0.18);
-  --color-gold-glow: rgb(251 191 36 / 0.35);
 
   --font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
 
@@ -67,7 +64,6 @@
     --color-error: #fca5a5;
 
     --color-hero-bg: #1e1b4b;
-    --color-countdown-to: #312e81;
     --shadow: none;
   }
 }
@@ -178,9 +174,7 @@ h3 {
   align-items: center;
   padding: var(--space-12) var(--gutter) calc(2 * var(--space-12));
   color: var(--color-on-hero);
-  background:
-    radial-gradient(circle at 100% 0%, var(--color-hero-glow), transparent 55%),
-    var(--color-hero-bg);
+  background: var(--color-hero-bg);
 }
 
 .site-header :focus-visible {
@@ -420,18 +414,15 @@ h3 {
    06. COUNTDOWN
    ===================================================== */
 
-/* Dark navy card with a gold frame, pulled up over the hero */
+/* Solid indigo card with a gold frame, pulled up over the hero */
 .countdown-card {
   margin-top: calc(-1 * (var(--space-12) + var(--space-8)));
   padding: var(--space-8) var(--space-4);
   text-align: center;
   color: var(--color-on-hero);
-  background:
-    radial-gradient(circle at 50% 0%, var(--color-hero-glow), transparent 60%),
-    linear-gradient(135deg, var(--color-hero-bg), var(--color-countdown-to));
+  background: var(--color-countdown-bg);
   border: 2px solid var(--color-gold);
   border-radius: calc(var(--radius) * 1.5);
-  box-shadow: 0 0 0 6px var(--color-gold-ring), 0 18px 40px var(--color-gold-glow);
 }
 
 /* Title as a gold LIVE label with a pulsing dot */
@@ -456,8 +447,7 @@ h3 {
 }
 
 @keyframes live-pulse {
-  from { box-shadow: 0 0 0 0 var(--color-gold-glow); }
-  to { box-shadow: 0 0 0 10px transparent; }
+  50% { opacity: 0.3; }
 }
 
 .countdown {
