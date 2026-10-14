@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="UIT Web Dev Day 2026: countdown and registration.">
+  <meta name="description" content="UIT Startup Challenge 2026: a startup competition for students with ideas in economics, finance, e-commerce and business.">
 
-  <title>UIT Web Dev Day 2026</title>
+  <title>UIT Startup Challenge 2026</title>
 
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
@@ -17,23 +17,46 @@
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <header class="site-header">
-    <p class="eyebrow">Event Hub</p>
-    <h1>UIT Web Dev Day 2026</h1>
-    <p>
-      One day of talks on modern web engineering at the University of
-      Information Technology, VNU-HCM.
-    </p>
+    <section class="hero-text" aria-label="Introduction">
+      <p class="eyebrow">Student Startup Competition 2026</p>
+      <h1>UIT Startup Challenge 2026</h1>
+      <p class="lead">
+        Turn your business idea into a real venture. Open to all university
+        students with ideas in economics, finance, e-commerce and social business.
+      </p>
+      <a class="cta" href="#register">Register your team</a>
+    </section>
+
+    <!-- Decorative growth chart, animated in CSS -->
+    <svg class="hero-chart" viewBox="0 0 200 140" aria-hidden="true" focusable="false">
+      <path class="chart-axis" d="M10 130H190"/>
+      <rect class="chart-bar" x="22" y="100" width="26" height="30" rx="4"/>
+      <rect class="chart-bar" x="62" y="80" width="26" height="50" rx="4"/>
+      <rect class="chart-bar" x="102" y="55" width="26" height="75" rx="4"/>
+      <rect class="chart-bar chart-bar-top" x="142" y="25" width="26" height="105" rx="4"/>
+      <path class="chart-trend" d="M20 92 64 70 104 46 150 16"/>
+      <path class="chart-arrow" d="M138 14h14v14"/>
+    </svg>
   </header>
 
   <main id="main-content">
+
+    <section class="stats-section" aria-label="Competition at a glance">
+      <ul class="stats">
+        <li><strong>300M VND</strong> prize pool</li>
+        <li><strong>2&ndash;5</strong> students per team</li>
+        <li><strong>4</strong> competition tracks</li>
+        <li><strong>12 Dec</strong> final pitch day</li>
+      </ul>
+    </section>
 
     <!-- ========================================
          SLICE 1 CONTRACT: COUNTDOWN
          datetime = UTC ISO 8601 (Z suffix), the only source of truth
          ======================================== -->
 
-    <section class="card" aria-labelledby="countdown-title">
-      <h2 id="countdown-title">Starts in</h2>
+    <section class="card countdown-card" aria-labelledby="countdown-title">
+      <h2 id="countdown-title">Final pitch starts in</h2>
 
       <ol class="countdown">
         <li><span data-unit="days">--</span> days</li>
@@ -43,9 +66,83 @@
       </ol>
 
       <p class="countdown-note">
-        Doors open
+        Final pitch day:
         <time id="event-start" datetime="2026-12-12T02:00:00Z">12 December 2026, 02:00 UTC</time>.
       </p>
+    </section>
+
+    <section aria-labelledby="tracks-title">
+      <h2 id="tracks-title">Competition tracks</h2>
+
+      <ul class="track-grid">
+        <li>
+          <article class="card track">
+            <span class="track-icon" aria-hidden="true">&#x1F4B3;</span>
+            <h3>Fintech &amp; Banking</h3>
+            <p>Payments, personal finance and lending products for the next generation of customers.</p>
+          </article>
+        </li>
+        <li>
+          <article class="card track">
+            <span class="track-icon" aria-hidden="true">&#x1F6D2;</span>
+            <h3>E-commerce &amp; Retail</h3>
+            <p>New ways to sell, deliver and serve customers online and offline.</p>
+          </article>
+        </li>
+        <li>
+          <article class="card track">
+            <span class="track-icon" aria-hidden="true">&#x1F331;</span>
+            <h3>Sustainable Business</h3>
+            <p>Social enterprises and green business models that earn a profit and do good.</p>
+          </article>
+        </li>
+        <li>
+          <article class="card track">
+            <span class="track-icon" aria-hidden="true">&#x1F4CA;</span>
+            <h3>Economics &amp; Analytics</h3>
+            <p>Data-driven tools for market research, pricing and business decisions.</p>
+          </article>
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="timeline-title">
+      <h2 id="timeline-title">Timeline</h2>
+
+      <ol class="timeline">
+        <li>
+          <time datetime="2026-11-20">Until 20 Nov</time>
+          <h3>Team registration</h3>
+          <p>Register your team and choose a track.</p>
+        </li>
+        <li>
+          <time datetime="2026-11-25">25 Nov</time>
+          <h3>Round 1: Business plan</h3>
+          <p>Submit a 10-page business plan for screening.</p>
+        </li>
+        <li>
+          <time datetime="2026-12-01">1&ndash;5 Dec</time>
+          <h3>Mentoring bootcamp</h3>
+          <p>Top 15 teams work with business mentors and investors.</p>
+        </li>
+        <li>
+          <time datetime="2026-12-12">12 Dec</time>
+          <h3>Final pitch</h3>
+          <p>Pitch to the judges and the audience for the prizes.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section aria-labelledby="prizes-title">
+      <h2 id="prizes-title">Prizes</h2>
+
+      <ul class="prizes">
+        <li class="card prize prize-top"><strong>120M VND</strong> Champion</li>
+        <li class="card prize"><strong>80M VND</strong> Runner-up</li>
+        <li class="card prize"><strong>50M VND</strong> Third place</li>
+        <li class="card prize"><strong>25M VND</strong> Social Impact Award</li>
+        <li class="card prize"><strong>25M VND</strong> People&rsquo;s Choice</li>
+      </ul>
     </section>
 
     <!-- ========================================
@@ -53,12 +150,13 @@
          data-state = idle | submitting | success | error
          ======================================== -->
 
-    <section class="card" aria-labelledby="register-title">
-      <h2 id="register-title">Register</h2>
+    <section id="register" class="card register-card" aria-labelledby="register-title">
+      <h2 id="register-title">Register your team</h2>
+      <p class="register-intro">The team leader registers once for the whole team.</p>
 
       <form id="register-form" data-state="idle" novalidate>
         <p class="field">
-          <label for="name">Full name</label>
+          <label for="name">Team leader&rsquo;s full name</label>
           <input id="name" name="name" type="text" autocomplete="name"
             required minlength="2" maxlength="80">
         </p>
@@ -67,10 +165,10 @@
           <label for="email">Email</label>
           <input id="email" name="email" type="email" autocomplete="email"
             required maxlength="254" aria-describedby="email-hint">
-          <small id="email-hint">We only use it to send your ticket.</small>
+          <small id="email-hint">We send your confirmation and next steps here.</small>
         </p>
 
-        <button type="submit">Register</button>
+        <button type="submit">Register team</button>
 
         <p class="form-status" role="status"></p>
       </form>
@@ -79,7 +177,7 @@
   </main>
 
   <footer class="site-footer">
-    <p>Homework 3 &mdash; Web Application Development, UIT</p>
+    <p>Fictional event for coursework &mdash; Homework 3, Web Application Development, UIT</p>
   </footer>
 
 </body>
