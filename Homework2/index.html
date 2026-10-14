@@ -19,6 +19,36 @@
   <header class="site-header">
     <h1>Drum Kit Engine</h1>
     <p>Press a key or click a pad to play.</p>
+
+    <!-- Decorative mascot: a punk drum that drums along (animated in CSS) -->
+    <svg class="mascot" viewBox="0 0 120 112" aria-hidden="true" focusable="false">
+      <g class="m-stick m-stick-left">
+        <path class="m-wood" d="M12 6 42 40"/>
+        <circle class="m-tip" cx="42" cy="40" r="4"/>
+      </g>
+      <g class="m-stick m-stick-right">
+        <path class="m-wood" d="M108 6 78 40"/>
+        <circle class="m-tip" cx="78" cy="40" r="4"/>
+      </g>
+      <g class="m-body">
+        <path class="m-hair" d="M46 40l3-15 5 10 6-16 6 16 5-10 3 15z"/>
+        <path class="m-leg" d="M42 94v10M78 94v10"/>
+        <ellipse class="m-shoe" cx="39" cy="105" rx="7" ry="4"/>
+        <ellipse class="m-shoe" cx="81" cy="105" rx="7" ry="4"/>
+        <path class="m-shell" d="M18 48v34c0 8 19 14 42 14s42-6 42-14V48"/>
+        <path class="m-rim" d="M19 84c3 6 20 10 41 10s38-4 41-10"/>
+        <ellipse class="m-head" cx="60" cy="48" rx="42" ry="12"/>
+        <ellipse class="m-cheek" cx="37" cy="75" rx="5.5" ry="3.5"/>
+        <ellipse class="m-cheek" cx="83" cy="75" rx="5.5" ry="3.5"/>
+        <g class="m-eyes">
+          <circle class="m-eye" cx="46" cy="67" r="5.5"/>
+          <circle class="m-eye" cx="74" cy="67" r="5.5"/>
+          <circle class="m-shine" cx="47.8" cy="65.2" r="1.8"/>
+          <circle class="m-shine" cx="75.8" cy="65.2" r="1.8"/>
+        </g>
+        <path class="m-mouth" d="M53 75q7 8 14 0"/>
+      </g>
+    </svg>
   </header>
 
   <main id="main-content">
@@ -33,15 +63,15 @@
       <h2 id="pads-title">Pads</h2>
 
       <ul class="pad-grid">
-        <li><button class="drum-pad" type="button" data-key="a" data-sound="sounds/kick.wav"><kbd>A</kbd> Kick</button></li>
-        <li><button class="drum-pad" type="button" data-key="s" data-sound="sounds/snare.wav"><kbd>S</kbd> Snare</button></li>
-        <li><button class="drum-pad" type="button" data-key="d" data-sound="sounds/hihat.wav"><kbd>D</kbd> Hi-hat</button></li>
-        <li><button class="drum-pad" type="button" data-key="f" data-sound="sounds/openhat.wav"><kbd>F</kbd> Open hat</button></li>
-        <li><button class="drum-pad" type="button" data-key="g" data-sound="sounds/clap.wav"><kbd>G</kbd> Clap</button></li>
-        <li><button class="drum-pad" type="button" data-key="h" data-sound="sounds/tom-low.wav"><kbd>H</kbd> Low tom</button></li>
-        <li><button class="drum-pad" type="button" data-key="j" data-sound="sounds/tom-high.wav"><kbd>J</kbd> High tom</button></li>
-        <li><button class="drum-pad" type="button" data-key="k" data-sound="sounds/ride.wav"><kbd>K</kbd> Ride</button></li>
-        <li><button class="drum-pad" type="button" data-key="l" data-sound="sounds/crash.wav"><kbd>L</kbd> Crash</button></li>
+        <li><button class="drum-pad" type="button" data-key="a" data-sound="sounds/kick.wav"><svg class="pad-icon" aria-hidden="true" focusable="false"><use href="icons.svg#kick"></use></svg><kbd>A</kbd> <span class="pad-label">Kick</span></button></li>
+        <li><button class="drum-pad" type="button" data-key="s" data-sound="sounds/snare.wav"><svg class="pad-icon" aria-hidden="true" focusable="false"><use href="icons.svg#snare"></use></svg><kbd>S</kbd> <span class="pad-label">Snare</span></button></li>
+        <li><button class="drum-pad" type="button" data-key="d" data-sound="sounds/hihat.wav"><svg class="pad-icon" aria-hidden="true" focusable="false"><use href="icons.svg#hihat"></use></svg><kbd>D</kbd> <span class="pad-label">Hi-hat</span></button></li>
+        <li><button class="drum-pad" type="button" data-key="f" data-sound="sounds/openhat.wav"><svg class="pad-icon" aria-hidden="true" focusable="false"><use href="icons.svg#openhat"></use></svg><kbd>F</kbd> <span class="pad-label">Open hat</span></button></li>
+        <li><button class="drum-pad" type="button" data-key="g" data-sound="sounds/clap.wav"><svg class="pad-icon" aria-hidden="true" focusable="false"><use href="icons.svg#clap"></use></svg><kbd>G</kbd> <span class="pad-label">Clap</span></button></li>
+        <li><button class="drum-pad" type="button" data-key="h" data-sound="sounds/tom-low.wav"><svg class="pad-icon" aria-hidden="true" focusable="false"><use href="icons.svg#tom-low"></use></svg><kbd>H</kbd> <span class="pad-label">Low tom</span></button></li>
+        <li><button class="drum-pad" type="button" data-key="j" data-sound="sounds/tom-high.wav"><svg class="pad-icon" aria-hidden="true" focusable="false"><use href="icons.svg#tom-high"></use></svg><kbd>J</kbd> <span class="pad-label">High tom</span></button></li>
+        <li><button class="drum-pad" type="button" data-key="k" data-sound="sounds/ride.wav"><svg class="pad-icon" aria-hidden="true" focusable="false"><use href="icons.svg#ride"></use></svg><kbd>K</kbd> <span class="pad-label">Ride</span></button></li>
+        <li><button class="drum-pad" type="button" data-key="l" data-sound="sounds/crash.wav"><svg class="pad-icon" aria-hidden="true" focusable="false"><use href="icons.svg#crash"></use></svg><kbd>L</kbd> <span class="pad-label">Crash</span></button></li>
       </ul>
     </section>
 
