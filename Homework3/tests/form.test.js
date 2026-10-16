@@ -5,9 +5,11 @@ const path = require("path");
 
 const src = fs.readFileSync(process.argv[2] || path.join(__dirname, "..", "script.js"), "utf8");
 
+class HTMLInputElement {}
+
 function field(name, rules) {
   const listeners = {};
-  return {
+  const input = {
     name, value: "", custom: "", ...rules, attrs: {},
     setCustomValidity(m) { this.custom = m; },
     addEventListener: (t, fn) => ((listeners[t] ||= []).push(fn)),
@@ -20,7 +22,10 @@ function field(name, rules) {
       if (this.type === "email" && this.value && !/^[^@\s]+@[^@\s]+$/.test(this.value)) return false;
       return true;
     },
+    get validity() { return { valid: this.valid() }; },
+    get validationMessage() { return this.valid() ? "" : this.custom || "Please fill out this field."; },
   };
+  return Object.setPrototypeOf(input, HTMLInputElement.prototype);
 }
 
 const nameField = field("name", { required: true, minLength: 2, maxLength: 80 });
@@ -31,7 +36,11 @@ const formListeners = {};
 const form = {
   dataset: { state: "idle" },
   attrs: {},
-  elements: { name: nameField, email: emailField, namedItem: (n) => ({ name: nameField, email: emailField })[n] },
+  elements: {
+    name: nameField, email: emailField,
+    namedItem: (n) => ({ name: nameField, email: emailField })[n],
+    *[Symbol.iterator]() { yield nameField; yield emailField; },
+  },
   addEventListener: (t, fn) => ((formListeners[t] ||= []).push(fn)),
   querySelector: (sel) => (sel.includes("button") ? submitButton : statusText),
   reportValidity: () => nameField.valid() && emailField.valid(),
@@ -48,7 +57,7 @@ class FormData {
   get(n) { return this.f.elements[n].value; }
 }
 const ctx = {
-  console, Promise, Error, Set, Map, String, Object, Number, Intl, FormData,
+  console, Promise, Error, Set, Map, String, Object, Number, Intl, FormData, HTMLInputElement,
   navigator: { onLine: true },
   Date,
   setTimeout: (fn) => { calls++; timers.push(fn); return timers.length; },
@@ -118,6 +127,8 @@ const check = (name, got, want) => {
   nameField.value = "     "; emailField.value = "space@uit.edu.vn";
   form.submit(); await flush();
   check("whitespace name -> no request", calls, 0);
+  check("whitespace name -> error state", [form.dataset.state, statusText.textContent],
+    ["error", "Please enter your full name (at least 2 characters)."]);
   nameField.custom = ""; // simulate user editing (input listener clears it)
   nameField.fire("input");
 
