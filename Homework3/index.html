@@ -154,7 +154,7 @@
       <h2 id="register-title">Register your team</h2>
       <p class="register-intro">The team leader registers once for the whole team.</p>
 
-      <form id="register-form" data-state="idle" novalidate>
+      <form id="register-form" data-state="idle" aria-busy="false" novalidate>
         <p class="field">
           <label for="name">Team leader&rsquo;s full name</label>
           <input id="name" name="name" type="text" autocomplete="name"
@@ -170,7 +170,7 @@
 
         <button type="submit">Register team</button>
 
-        <p class="form-status" role="status"></p>
+        <p class="form-status" role="status" aria-live="polite" aria-atomic="true">Registration is open. Enter your details to join the challenge.</p>
       </form>
     </section>
 
