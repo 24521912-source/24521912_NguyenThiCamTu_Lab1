@@ -138,7 +138,8 @@
       .replace(/\p{Cc}/gu, " ")
       .replace(/\s+/g, " ")
       .trim()
-      .slice(0, maxLength > 0 ? maxLength : undefined);
+      .slice(0, maxLength > 0 ? maxLength : undefined)
+      .trim();
   }
 
   nameField.addEventListener("input", () => nameField.setCustomValidity(""));
@@ -156,7 +157,14 @@
     nameField.setCustomValidity(
       name.length < 2 ? "Please enter your full name (at least 2 characters)." : ""
     );
-    if (!form.reportValidity()) return;
+    if (!form.reportValidity()) {
+      const invalidField = [...form.elements].find((element) =>
+        element instanceof HTMLInputElement && !element.validity.valid
+      );
+      setFormState("error", invalidField?.validationMessage ||
+        "Please check your registration details.");
+      return;
+    }
 
     setFormState("submitting", "Submitting your team registration...");
 
